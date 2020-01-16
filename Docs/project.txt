@@ -1,0 +1,10 @@
+1.Factory, many floors, many machines
+Machines table 
+
+calendars 
+
+ubuntu app for windows
+
+https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount/
+
+paradigm comunity

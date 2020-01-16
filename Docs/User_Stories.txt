@@ -1,0 +1,28 @@
+Maitenence Planner Application
+
+USER STORIES
+
+All users off this app have to login/logout from aplication.
+
+
+1. Service Manager has to be able to:
+    # add machines
+    # add technicans
+    # add maitenence plans
+    # create spare parts orders (if there is no SPP yet)
+    # create maitenence tasks/chedules for technicans
+    # create training schedules
+
+2.Technicans has to be able to:
+    # see his tasks
+    # see the history off maitenences
+    # add maitenences to machine history
+    # see available trainings
+    # be able to get the latest machine service manual
+    # see spareparts availability and make order to service manager/warehouse
+    # be able to see all spareparts books
+
+3. Spare Parts Specialist(optional):
+    # be able to see all spareparts books
+    # place orders for spare parts
+    # handle min max quantities in warehouse

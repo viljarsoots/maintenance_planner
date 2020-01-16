@@ -11,6 +11,7 @@ var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
 const echoPostUrl = "http://localhost:7000/user";
+//const echoPostUrl = "http://localhost:7000/user";
 
 var config = {
     httpsAgent: agent
@@ -33,7 +34,8 @@ export default class RegisterUser extends React.Component {
             rookie: false,
             technician: false,
             specialist: false,
-            productSpecialist: false
+            productSpecialist: false,
+            admin: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -76,6 +78,11 @@ export default class RegisterUser extends React.Component {
             productSpecialist: !initialState.productSpecialist,
         }));
     }
+    onChangeAdmin = () =>{
+        this.setState(initialState => ({
+            admin: !initialState.admin,
+        }));
+    }
 
     handleSubmit(event) {
         const options = {
@@ -86,12 +93,13 @@ export default class RegisterUser extends React.Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            password: this.state.password,
-            startDate: this.state.startDate,
-            rookie: this.state.rookie,
-            technician: this.state.technician,
-            specialist: this.state.specialist,
-            productSpecialist: this.state.productSpecialist
+            //password: this.state.password,
+            startDate: this.state.startDate
+            // rookie: this.state.rookie,
+            // technician: this.state.technician,
+            // specialist: this.state.specialist,
+            // productSpecialist: this.state.productSpecialist,
+            // admin: this.state.admin
         };
 
         axios.post(echoPostUrl, data, options)
@@ -130,6 +138,8 @@ export default class RegisterUser extends React.Component {
                 this.setState({ 'technician': techniciansData[e].technician });
                 this.setState({ 'specialist': techniciansData[e].specialist });
                 this.setState({ 'productSpecialist': techniciansData[e].productSpecialist });
+                this.setState({ 'admin': techniciansData[e].admin });
+
                 
         }else{
             this.state = {
@@ -142,7 +152,8 @@ export default class RegisterUser extends React.Component {
                 rookie: false,
                 technician: false,
                 specialist: false,
-                productSpecialist: false
+                productSpecialist: false,
+                admin: false
             };
         }
    
@@ -232,6 +243,12 @@ export default class RegisterUser extends React.Component {
                                                 <label htmlFor="inline-productSpecialist" className="form-check-label ">
                                                     <input type="checkbox" id="productSpecialist" name="productSpecialist" checked={this.state.productSpecialist}
                                                         onChange={this.onChangeProductSpecialist} className="form-check-input" />Product Specialist
+                                                        </label>
+                                            </div>
+                                            <div className="col col-md-3">
+                                                <label htmlFor="inline-admin" className="form-check-label ">
+                                                    <input type="checkbox" id="admin" name="admin" checked={this.state.admin}
+                                                        onChange={this.onChangeAdmin} className="form-check-input" />Admin
                                                         </label>
                                             </div>
                                         </div>

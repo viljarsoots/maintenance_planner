@@ -1,0 +1,138 @@
+OOP
+
+Q.1     How would you describe the abstraction in OOP?
+
+Answer: Spliting complexity to smaller parts so you even don't know exaxtly how things are done but they work and you can use he functionality.
+
+Q.2     How it is possible to implement Encapsulation in a class?
+
+Answer: Is the way how method and parameters are kept inside class and be reused with parameters given to them without modifing the method or data itself.
+	There are different ways to protect data inside class.
+
+Q.3     What are the benefits of Inheritance between classes?
+
+Answer: Inheritence you will pass the parent metods to child, so child can do everything it parent does only with a different or its own way.
+
+Q.4     How would you describe the polymorphism?
+
+Answer: if same method an do different things depending from whitch Class they are coming from. 
+
+Q.5     What it means and where can be used the keyword static?
+
+Answer: With static keyvord we declare variables, methods blocks what belong to class.
+	There is no need to create object to acces static member. 
+
+Q.6     Where can I access a protected method?
+
+Answer: At same class, at same package subclass, at same package non subclass, at different package subclass.	
+
+Q.7     What it means for a method to be public or private?
+
+Answer: If method is public it can be accsessed from everywhere. 
+	If it is private it can only be accsessed from the class it is defined.
+
+Q.8     What is abstract class?
+
+Answer: Abstract class is usually a parent class from where child classes are inherited 
+
+Q.9     What is interface?
+
+Answer: Interface is compleatly abstract class what has empty methods. All classes what are extending that class hevae to have the same methods what interface does.
+
+Q.10     Can you describe what is method override?
+
+Answer: method override is happens when parent has a method what is declared but child uses it in a different way. So it is overwritten with @override annotation in child class.
+
+
+Threads:
+
+                1) What is a thread?
+                
+                2) How can I run a new thread?
+                
+                3) What does the synchronized modifier do when applied to a method?
+                
+                4) What happens if I place synchronized on a static method?
+                
+                5) What are race conditions between threads?
+                
+                
+
+Collections
+
+                1) Describe Collections classes Api (List, Set, Map, Queue, Stack)
+                
+                2) What are main implementations of List? (What are their difference)
+
+                3) Describe some implementations of Set interface
+
+                4) Where is hashcode method used in collections?
+
+                5) Describe how HashTable works (put and get)
+
+                6) What are buckets in HashMap?
+
+                7) What is the load factor in a HashMap?
+
+                8) How a TreeSet is able to order objects from a Person class?
+
+                9) How a Set<Person> is able to detect duplicates when I add a new Person in the Set?
+
+                10) What it means O(1) O(n) O(n2)?
+
+
+JDBC
+
+                1) Can you describe main java objects involved into a task where I need to query DB tables?
+
+                2) Why Connections are expensive to create?
+
+                3) How can we mitigate (2)?
+
+                4) What are benefits of PreparedStatement over Statement objects?
+
+                5) What is a Db Driver?
+                
+                
+
+
+SPRING
+
+                1) Can you explain what is Dependency Injection?
+                
+                2) What are the benefits of dependency injection?
+                
+                3) What are the different ways I can populate a Spring Application Context?
+                
+                4) Can you tell pros and cons of each one of those (3) ways?
+                
+                5) What it means @Autowired? Where can I use it? 
+                
+                6) What are scopes of Spring bean?
+                
+                7) How can I run some code immediately after a Spring managed bean is built?
+                
+                8) What is AOP? (Describe main concepts)
+
+                9) What is aop weaver process?
+
+                10) Where aop is used in Spring? (Provide example)
+
+HIBERNATE:
+
+                1) What is a Hibernate SessionFactory ?
+                
+                2) What is a Hibernate Session?
+                
+                3) How many ways you know about how to query a db with hibernate?
+                
+                4) How can you implement relationships between table in Entity classes?
+                
+ARCHITECTURE:
+
+                1) What problems should be solved in Controller classes?
+                2) What problems should be solved in Service classes?
+                3) What problems should be solved in Dao classes?
+				4) Principles of exception handling through layers
+                5) What is a unit test? How should it be designed?
+                6) What is integration test? How should it be designed?

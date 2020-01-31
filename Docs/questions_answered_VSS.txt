@@ -61,37 +61,96 @@ Threads:
 Collections
 
                 1) Describe Collections classes Api (List, Set, Map, Queue, Stack)
+
+		Answer: List: List is like an array but with dynamic length.
+			Set: Is a collection in witch there can't be duplicates.
+			Map: Is a collection where all values have uniqe key what can have one value. the value can be also array or a list.
+			Quene: Is a list where first inserted elements are taken out first.
+			Stack: Is a list where last inserted elements are taken out first.
+
                 
                 2) What are main implementations of List? (What are their difference)
 
+		Answer: There are 2 main implementations.
+			1. ArrayList: Is good to use if you do not need to make changes to the beginning or to the middle of the list it is the fastest List to use
+			2. LinkedList: Should be used if operations need to be made at the beginning or inside the list in that case it can work faster than ArrayList. 
+
                 3) Describe some implementations of Set interface
+
+		Answer: Genarally there are 3 different ways HashSet, TreeSet, LinkedHashSet.
+			1. HashSet: Is the fastest off them but you can't order the entities inside it.
+			2. TreeSet: is mostly used whe ordering is needed.
+			3. LinkedHashSet: Is like HashSet having Linked list inside it it has isertion ordered iteration inside it. 
+			Main benefit is that there is at least some ordering compared to HashSet and it is faster than TreeSet.
 
                 4) Where is hashcode method used in collections?
 
+		Answer: hashCode() method is used when objects are inserted to HashTable HashMap or HashTree.
+			hascCode is calculated based on a key what object has and is used for eqality comparision. 	
+
                 5) Describe how HashTable works (put and get)
+
+		Answer: HashTable is syncronised table so only one thread can work with the Table at the same time.
+			put() method is used to put data to hash table. You need to insert the key and value.
+			if key alrady exsist the old value is returned.
+			get() method is returning either value or key depends on what value is given.
 
                 6) What are buckets in HashMap?
 
+		Answer: By default Hashmap has 16 buckets what have with different hashcode.
+			each bucket has their own linked list in it. 
+
                 7) What is the load factor in a HashMap?
+
+		Answer: Load Factor represents the value for keeping optimum bucket size.
+			By default Hashmap has loadfactor 0,75. So if there is by default 16 buckets in Hashmap that means you can have max 12 entries in one bucket. 12/16= 0.75.
+			When 13 element is inserted Refactor is called and hashmap will have 32 buckets. 
 
                 8) How a TreeSet is able to order objects from a Person class?
 
+		Answer: To sort objects from Person class inserted to TreeSet you need to pass the Comparator object to to TreeSet constructor.
+		Also to make it work you have to override the Comarator compare()method in a way you want Persons would be sorted.
+
                 9) How a Set<Person> is able to detect duplicates when I add a new Person in the Set?
 
+		Answer: Set will be able to detect duplicate on person on uniqe value what is passed to person in Person class.
+			equals() method needs to be overwritten to make sure that objects are compared by the uniqe values this has to be made in Person Class.
+			Based on that uniqe value also hashcode() method needs to be set up otherwise it can happen that equal objects are not compared.
+
                 10) What it means O(1) O(n) O(n2)?
+
+		Answer: O(1): When easy operation always takes same amout of time like asking element from ArraList by index.
+			O(n): When operation time grows linearly. so the operation takes as much time as there are opertaions needed to be done. Like removing 1 element from ArrayList.
+			      What means that we have to moove all elements in List one step back. 
+			O(n2): On that case there are nested operations and that means that all operations are in square of the input data set. 
 
 
 JDBC
 
                 1) Can you describe main java objects involved into a task where I need to query DB tables?
+			
+		Answer: 1. jdbc driver to create connection
+			2. create statment or preparedstatment
+			3. executing query
+			4. closing connection
 
                 2) Why Connections are expensive to create?
 
+		Answer: Because there is always extra time used for handshake so you need server to answer before you can start transaction.
+
                 3) How can we mitigate (2)?
+
+		Answer: Use prepared statment and use connection pool 
 
                 4) What are benefits of PreparedStatement over Statement objects?
 
+		Answer: 1. PreparedStatement is usable multiple times with different data in it.
+			2. PreparedStatement is faster than statment because it is precompiled. 
+			3. PreparedStatement is more secure because you can prevent SQL injection attacks in Java
+
                 5) What is a Db Driver?
+
+		Answer: Every DataBase has it own driver like MySQL, Oracle, MSSQL. For making a connection they all have theyir own driver.
                 
                 
 
@@ -133,6 +192,6 @@ ARCHITECTURE:
                 1) What problems should be solved in Controller classes?
                 2) What problems should be solved in Service classes?
                 3) What problems should be solved in Dao classes?
-				4) Principles of exception handling through layers
+		4) Principles of exception handling through layers
                 5) What is a unit test? How should it be designed?
                 6) What is integration test? How should it be designed?

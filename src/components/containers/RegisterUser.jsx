@@ -10,7 +10,7 @@ var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 
 const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
-const echoPostUrl = "http://localhost:7000/user";
+const echoPostUrl = "http://localhost:8080/rest/";
 //const echoPostUrl = "http://localhost:7000/user";
 
 var config = {
@@ -94,7 +94,8 @@ export default class RegisterUser extends React.Component {
             lastName: this.state.lastName,
             email: this.state.email,
             //password: this.state.password,
-            startDate: this.state.startDate
+            startDate: this.state.startDate,
+            userRoleId: 3
             // rookie: this.state.rookie,
             // technician: this.state.technician,
             // specialist: this.state.specialist,
@@ -102,7 +103,7 @@ export default class RegisterUser extends React.Component {
             // admin: this.state.admin
         };
 
-        axios.post(echoPostUrl, data, options)
+        axios.post(echoPostUrl+"user/save", data, options)
             .then((response) => {
                 console.log("response from echo server");
                 console.log(data);

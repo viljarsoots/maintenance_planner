@@ -2,12 +2,13 @@ OOP
 
 Q.1     How would you describe the abstraction in OOP?
 
-Answer: Spliting complexity to smaller parts so you even don't know exaxtly how things are done but they work and you can use he functionality.
+Answer: Abstraction is generalisation and domain analysis. From this it will be clear to understand whitch classes propertis and methods are needed.
+	This also a way to hide complexity behaind a sceen without knowing how some methods are working exaxtly, like frameworks.	
 
 Q.2     How it is possible to implement Encapsulation in a class?
 
-Answer: Is the way how method and parameters are kept inside class and be reused with parameters given to them without modifing the method or data itself.
-	There are different ways to protect data inside class.
+Answer: Is the way how methods and parameters are kept inside class and be reused with parameters given to them without modifing the method or data itself.
+	Getters setters and constractors are used to protect data. Reusability.
 
 Q.3     What are the benefits of Inheritance between classes?
 

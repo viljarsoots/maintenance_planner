@@ -8,29 +8,11 @@ import {config} from '../data/config.js';
 import {axios} from '../data/config.js';
 import {agent} from '../data/config.js';
 
-// const axios = require("axios"); //external library  https://github.com/axios/axios
-// let httpsProxyAgent = require('https-proxy-agent');
-
-// var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
-
-// const mockDataUrl = "http://localhost:8080/rest/";
-// //const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
-// //const echoPostUrl = "http://localhost:8080/rest/user";
-// const echoPostUrl = "http://localhost:8080/rest/user";
-
-// var config = {
-//     httpsAgent: agent
-// }
-
-
-
 const selectRow = {
     mode: 'checkbox',
     clickToSelect: true,
     
   };
-
-
 
 export default class TechnicianTable extends React.Component{
     
@@ -76,9 +58,7 @@ export default class TechnicianTable extends React.Component{
           .then((response) => {
             console.log(response);
       this.setState({techniciansData: response.data.data});
-      // console.log(response.data);
-
-
+      
     }).catch((exception) => {
               console.log(exception);
           });

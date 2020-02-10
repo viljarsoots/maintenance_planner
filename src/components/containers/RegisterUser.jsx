@@ -1,26 +1,11 @@
 import React from 'react';
 import './RegisterUser.css';
-//import {techniciansData} from '../containers/TechnicianTable.jsx';
 import {mockDataUrl} from '../data/config.js';
 import {config} from '../data/config.js';
 import {axios} from '../data/config.js';
 import {agent} from '../data/config.js';
 import {echoPostUrl} from '../data/config.js';
 
-
-// const axios = require("axios"); //external library  https://github.com/axios/axios
-// let httpsProxyAgent = require('https-proxy-agent');
-
-// var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
-
-
-// const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
-// const echoPostUrl = "http://localhost:8080/rest/";
-// //const echoPostUrl = "http://localhost:7000/user";
-
-// var config = {
-//     httpsAgent: agent
-// }
 
 
 export default class RegisterUser extends React.Component {
@@ -36,11 +21,12 @@ export default class RegisterUser extends React.Component {
             email: '',
             password: '',
             startDate: '',
-            rookie: false,
-            technician: false,
-            specialist: false,
-            productSpecialist: false,
-            admin: false
+            userRoleId:''
+            // rookie: '',
+            // technician: false,
+            // specialist: false,
+            // productSpecialist: false,
+            // admin: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -48,7 +34,7 @@ export default class RegisterUser extends React.Component {
         this.handeleGet = this.handeleGet.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.handleCancel=this.handleCancel.bind(this);
-
+        this.handleRadioChange=this.handleRadioChange.bind(this);
         console.log(this.props.match.params.id);
         
     }
@@ -63,10 +49,10 @@ export default class RegisterUser extends React.Component {
             [name]: value
         });
     }
-    onChangeRookie = () => {
-        this.setState(initialState => ({
-            rookie: !initialState.rookie,
-        }));
+    onChangeRookie (event) {
+        this.setState({
+            rookie: event.target.value,
+        });
     }
     onChangeTechnician = () => {
         this.setState(initialState => ({
@@ -88,6 +74,12 @@ export default class RegisterUser extends React.Component {
             admin: !initialState.admin,
         }));
     }
+    handleRadioChange(event) {
+        this.setState({
+            userRoleId: event.target.value
+        });
+      }
+
 
     handleSubmit(event) {
         const options = {
@@ -95,12 +87,13 @@ export default class RegisterUser extends React.Component {
             httpsAgent: agent
         };
         let data = {
+            id: this.state.id,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
             //password: this.state.password,
             startDate: this.state.startDate,
-            userRoleId: 3
+            userRoleId: this.state.userRoleId
             // rookie: this.state.rookie,
             // technician: this.state.technician,
             // specialist: this.state.specialist,
@@ -115,7 +108,7 @@ export default class RegisterUser extends React.Component {
             }).catch((exception) => {
                 console.log(exception);
             });
-
+                this.handleCancel();
         event.preventDefault();
     }
     componentDidMount(){    
@@ -229,38 +222,46 @@ export default class RegisterUser extends React.Component {
                                             <label className=" form-control-label">Technican Competences</label>
                                         </div>
                                         <br />
-                                        <div className="row form-group" id="checkBoxes">
-                                            <div className="col col-md-3">
-                                                <label htmlFor="inline-rookie" className="form-check-label ">
-                                                    <input type="checkbox" id="rookie" name="rookie" checked={this.state.rookie}
-                                                        onChange={this.onChangeRookie} className="form-check-input" />Rookie
+                                        <div className="radio">
+                                        <div className="row form-group" id="radio">
+                                            <div className="col-md-12">
+                                            <div className="form-check-inline form-check">
+                                                        
+                                            <div className="radio">    
+                                                <label >
+                                                    <input type="radio" id="rookie" value="5" checked={this.state.userRoleId === 5}
+                                                        onChange={this.handleRadioChange} className="form-check-input" />Rookie
+                                        
                                                         </label>
-                                            </div>
-                                            <div className="col col-md-3">
-                                                <label htmlFor="inline-technician" className="form-check-label ">
-                                                    <input type="checkbox" id="technician" name="technician" checked={this.state.technician}
-                                                        onChange={this.onChangeTechnician} className="form-check-input" />Technician
+                                        </div>                                        
+                                        <div className="radio">
+                                                <label >
+                                                    <input type="radio" id="technician" value="4" checked={this.state.userRoleId === 4}
+                                                        onChange={this.handleRadioChange} className="form-check-input" />Technician
                                                         </label>
-                                            </div>
-                                            <div className="col col-md-3">
+                                                        </div>                                        
+                                        <div className="radio">
                                                 <label htmlFor="inline-specialist" className="form-check-label ">
-                                                    <input type="checkbox" id="specialist" name="specialist" checked={this.state.specialist}
-                                                        onChange={this.onChangeSpecialist} className="form-check-input" />Specialist
+                                                    <input type="radio" id="specialist" value="3" checked={this.state.userRoleId === 3}
+                                                        onChange={this.handleRadioChange} className="form-check-input" />Specialist
                                                         </label>
-                                            </div>
-                                            <div className="col col-md-3">
+                                                        </div>                                        
+                                        <div className="radio">
                                                 <label htmlFor="inline-productSpecialist" className="form-check-label ">
-                                                    <input type="checkbox" id="productSpecialist" name="productSpecialist" checked={this.state.productSpecialist}
-                                                        onChange={this.onChangeProductSpecialist} className="form-check-input" />Product Specialist
+                                                    <input type="radio" id="productSpecialist" value="2" checked={this.state.userRoleId === 2}
+                                                        onChange={this.handleRadioChange} className="form-check-input" />Product Specialist
                                                         </label>
-                                            </div>
-                                            <div className="col col-md-3">
+                                                        </div>                                        
+                                        <div className="radio">
                                                 <label htmlFor="inline-admin" className="form-check-label ">
-                                                    <input type="checkbox" id="admin" name="admin" checked={this.state.admin}
-                                                        onChange={this.onChangeAdmin} className="form-check-input" />Admin
+                                                    <input type="radio" id="admin" value="1" checked={this.state.userRoleId === 1}
+                                                        onChange={this.handleRadioChange} className="form-check-input" />Admin
                                                         </label>
+                                                        </div>
+                                                        </div>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
 
                                     <button className="au-btn au-btn--block au-btn--green m-b-20" type="submit">Save New Technican</button>

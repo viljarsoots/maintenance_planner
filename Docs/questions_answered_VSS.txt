@@ -25,7 +25,8 @@ Answer: With static keyvord we declare variables, methods blocks what belong to 
 
 Q.6     Where can I access a protected method?
 
-Answer: At same class, at same package subclass, at same package non subclass, at different package subclass.	
+Answer: Protected members of a class are visible within the package. 
+	Therefore, we can only access within the package but can be accessed to the subclasses outside the package through the inheritance only.	
 
 Q.7     What it means for a method to be public or private?
 
@@ -34,11 +35,17 @@ Answer: If method is public it can be accsessed from everywhere.
 
 Q.8     What is abstract class?
 
-Answer: Abstract class is usually a parent class from where child classes are inherited 
+Answer: 
+    An abstract class must be declared with an abstract keyword.
+    It can have abstract and non-abstract methods.
+    It cannot be instantiated.
+    It can have constructors and static methods also.
+    It can have final methods which will force the subclass not to change the body of the method.
+
 
 Q.9     What is interface?
 
-Answer: Interface is compleatly abstract class what has empty methods. All classes what are extending that class hevae to have the same methods what interface does.
+Answer: Interface is compleatly abstract class what has empty methods. All classes what are inheriting from that class heve to have the same methods implemented what interface does.
 
 Q.10     Can you describe what is method override?
 

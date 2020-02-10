@@ -15,6 +15,7 @@ var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 const mockDataUrl = "https://api.mockaroo.com/api/9424bf70?count=200&key=87536420";
 const echoPostUrl = "http://localhost:7000/machine";
+//const mockDataUrl = "http://localhost:8080/rest";
 
 var config = {
     httpsAgent: agent

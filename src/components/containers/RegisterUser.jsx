@@ -1,7 +1,7 @@
 import React from 'react';
 import './RegisterUser.css';
-import {techniciansData} from '../data/TechniciansData.js';
-
+import {techniciansData} from '../containers/TechnicianTable.jsx';
+// import '../data/config.js';
 
 const axios = require("axios"); //external library  https://github.com/axios/axios
 let httpsProxyAgent = require('https-proxy-agent');
@@ -41,7 +41,7 @@ export default class RegisterUser extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handeleGet = this.handeleGet.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
+        // this.componentDidMount = this.componentDidMount.bind(this);
         this.handleCancel=this.handleCancel.bind(this);
 
         console.log(this.props.match.params.id);
@@ -113,9 +113,9 @@ export default class RegisterUser extends React.Component {
 
         event.preventDefault();
     }
-    componentDidMount(){    
-     this.handeleGet();
-    }
+    // componentDidMount(){    
+    //  this.handeleGet();
+    // }
     
     handleCancel(){
         this.props.history.push('/techTable')
@@ -123,23 +123,26 @@ export default class RegisterUser extends React.Component {
      
      
      handeleGet(event){
-         let e = this.props.match.params.id -1;
-    //     axios.get(mockDataUrl, config)
-    //         .then((response) => {
-    //             console.log(response.data);
-        if(e >= 0){
-            console.log(techniciansData[e].id);
-                this.setState({ 'id': techniciansData[e].id });
-                this.setState({ 'firstName': techniciansData[e].firstName });
-                this.setState({ 'lastName': techniciansData[e].lastName });
-                this.setState({ 'email': techniciansData[e].email });
-                this.setState({ 'password': techniciansData[e].password });
-                this.setState({ 'startDate': techniciansData[e].startDate });
-                this.setState({ 'rookie': techniciansData[e].rookie });
-                this.setState({ 'technician': techniciansData[e].technician });
-                this.setState({ 'specialist': techniciansData[e].specialist });
-                this.setState({ 'productSpecialist': techniciansData[e].productSpecialist });
-                this.setState({ 'admin': techniciansData[e].admin });
+         let e = this.props.match.params.id;
+         let getdata = techniciansData;
+        // axios.get(echoPostUrl+"user/"+ e, config)
+        //     .then((response) => {
+        //         console.log(response);
+                getdata = response.data.data;
+                console.log(getdata);
+         if(e >= 0){
+           console.log(getdata.id);
+                this.setState({ 'id': getdata.id });
+                this.setState({ 'firstName': getdata.firstName });
+                this.setState({ 'lastName': getdata.lastName });
+                this.setState({ 'email': getdata.email });
+                this.setState({ 'password': getdata.password });
+                this.setState({ 'startDate': getdata.startDate });
+                // this.setState({ 'rookie': response.data[e].rookie });
+                // this.setState({ 'technician': response.data[e].technician });
+                // this.setState({ 'specialist': response.data[e].specialist });
+                // this.setState({ 'productSpecialist': response.data[e].productSpecialist });
+                // this.setState({ 'admin': response.data[e].admin });
 
                 
         }else{
@@ -158,16 +161,16 @@ export default class RegisterUser extends React.Component {
             };
         }
    
-                //console.log(response.status);
+                // console.log(response.status);
                 // console.log(response.statusText);
                 // console.log(response.headers);
                 // console.log(response.config);
 
-            // }).catch((exception) => {
-            //     console.log(exception);
-            // });
+        //     }).catch((exception) => {
+        //         console.log(exception);
+        //     });
 
-        //event.preventDefault();
+        // event.preventDefault();
     }
 
 

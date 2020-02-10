@@ -2,24 +2,25 @@ import React from 'react';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-//import {techniciansData} from '../data/TechniciansData.js';
-// import {mockDataUrl} from '../data/config.js';
-// import {config} from '../data/config.js';
-// import {axios} from '../data/config.js';
+import {techniciansData} from '../data/TechniciansData.js';
+import {mockDataUrl} from '../data/config.js';
+import {config} from '../data/config.js';
+import {axios} from '../data/config.js';
+import {agent} from '../data/config.js';
 
-const axios = require("axios"); //external library  https://github.com/axios/axios
-let httpsProxyAgent = require('https-proxy-agent');
+// const axios = require("axios"); //external library  https://github.com/axios/axios
+// let httpsProxyAgent = require('https-proxy-agent');
 
-var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
+// var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
-const mockDataUrl = "http://localhost:8080/rest/";
-//const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
-//const echoPostUrl = "http://localhost:8080/rest/user";
-const echoPostUrl = "http://localhost:8080/rest/user";
+// const mockDataUrl = "http://localhost:8080/rest/";
+// //const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
+// //const echoPostUrl = "http://localhost:8080/rest/user";
+// const echoPostUrl = "http://localhost:8080/rest/user";
 
-var config = {
-    httpsAgent: agent
-}
+// var config = {
+//     httpsAgent: agent
+// }
 
 
 
@@ -29,7 +30,7 @@ const selectRow = {
     
   };
 
-   export const techniciansData;
+
 
 export default class TechnicianTable extends React.Component{
     

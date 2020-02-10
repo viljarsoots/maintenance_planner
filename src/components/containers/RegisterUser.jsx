@@ -1,21 +1,26 @@
 import React from 'react';
 import './RegisterUser.css';
-import {techniciansData} from '../containers/TechnicianTable.jsx';
-// import '../data/config.js';
+//import {techniciansData} from '../containers/TechnicianTable.jsx';
+import {mockDataUrl} from '../data/config.js';
+import {config} from '../data/config.js';
+import {axios} from '../data/config.js';
+import {agent} from '../data/config.js';
+import {echoPostUrl} from '../data/config.js';
 
-const axios = require("axios"); //external library  https://github.com/axios/axios
-let httpsProxyAgent = require('https-proxy-agent');
 
-var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
+// const axios = require("axios"); //external library  https://github.com/axios/axios
+// let httpsProxyAgent = require('https-proxy-agent');
+
+// var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 
-const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
-const echoPostUrl = "http://localhost:8080/rest/";
-//const echoPostUrl = "http://localhost:7000/user";
+// const mockDataUrl = "https://api.mockaroo.com/api/c4ece440?count=1&key=87536420";
+// const echoPostUrl = "http://localhost:8080/rest/";
+// //const echoPostUrl = "http://localhost:7000/user";
 
-var config = {
-    httpsAgent: agent
-}
+// var config = {
+//     httpsAgent: agent
+// }
 
 
 export default class RegisterUser extends React.Component {
@@ -41,7 +46,7 @@ export default class RegisterUser extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handeleGet = this.handeleGet.bind(this);
-        // this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
         this.handleCancel=this.handleCancel.bind(this);
 
         console.log(this.props.match.params.id);
@@ -113,9 +118,9 @@ export default class RegisterUser extends React.Component {
 
         event.preventDefault();
     }
-    // componentDidMount(){    
-    //  this.handeleGet();
-    // }
+    componentDidMount(){    
+     this.handeleGet();
+    }
     
     handleCancel(){
         this.props.history.push('/techTable')
@@ -124,13 +129,13 @@ export default class RegisterUser extends React.Component {
      
      handeleGet(event){
          let e = this.props.match.params.id;
-         let getdata = techniciansData;
-        // axios.get(echoPostUrl+"user/"+ e, config)
-        //     .then((response) => {
-        //         console.log(response);
+         let getdata = null;
+        axios.get(mockDataUrl+"user/"+ e, config)
+            .then((response) => {
+                console.log(response);
                 getdata = response.data.data;
                 console.log(getdata);
-         if(e >= 0){
+        //  if(e >= 0){
            console.log(getdata.id);
                 this.setState({ 'id': getdata.id });
                 this.setState({ 'firstName': getdata.firstName });
@@ -145,30 +150,30 @@ export default class RegisterUser extends React.Component {
                 // this.setState({ 'admin': response.data[e].admin });
 
                 
-        }else{
-            this.state = {
-                id:'',
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: '',
-                startDate: '',
-                rookie: false,
-                technician: false,
-                specialist: false,
-                productSpecialist: false,
-                admin: false
-            };
-        }
+        // }else{
+        //     this.state = {
+        //         id:'',
+        //         firstName: '',
+        //         lastName: '',
+        //         email: '',
+        //         password: '',
+        //         startDate: '',
+        //         rookie: false,
+        //         technician: false,
+        //         specialist: false,
+        //         productSpecialist: false,
+        //         admin: false
+        //     };
+        // }
    
-                // console.log(response.status);
-                // console.log(response.statusText);
-                // console.log(response.headers);
-                // console.log(response.config);
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.config);
 
-        //     }).catch((exception) => {
-        //         console.log(exception);
-        //     });
+            }).catch((exception) => {
+                console.log(exception);
+            });
 
         // event.preventDefault();
     }

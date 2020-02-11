@@ -24,7 +24,6 @@ export default class AddMachine extends React.Component {
             machineName: '',
             producerName: '',
             installDate: '',
-            machineType: '',
             nrOfMaitn: '',
             location: '',
             lastMtnDate:''
@@ -56,7 +55,6 @@ export default class AddMachine extends React.Component {
             machineName: this.state.machineName,
             producerName: this.state.producerName,
             installDate: this.state.installDate,
-            machineType: this.state.machineType,
             nrOfMaitn: this.state.nrOfMaitn,
             location: this.state.location,
             lastMtnDate: this.state.lastMtnDate
@@ -82,7 +80,6 @@ export default class AddMachine extends React.Component {
                 this.setState({ 'machineName': response.data[0].machineName });
                 this.setState({ 'producerName': response.data[0].producerName });
                 this.setState({ 'installDate': response.data[0].installDate });
-                this.setState({ 'machineType': response.data[0].machineType });
                 this.setState({ 'nrOfMaitn': response.data[0].nrOfMaitn });
                 this.setState({ 'location': response.data[0].location });
                 this.setState({ 'lastMtnDate': response.data[0].lastMtnDate });
@@ -133,17 +130,11 @@ export default class AddMachine extends React.Component {
                                         <label>Producer Name</label>
                                         <input className="au-input au-input--full" type="text"
                                             value={this.state.producerName} onChange={this.handleChange} name="producerName" placeholder="Producer Name" />
-
-                                        <div className="form-group">
-                                            <label>Install date</label>
-                                            <input className="au-input au-input--full" type="date"
-                                                value={this.state.installDate} onChange={this.handleChange} name="installDate" placeholder="Install Date" />
-                                        </div>
                                     </div>
                                     <div className="form-group">
-                                        <label>Machine Type</label>
-                                        <input className="au-input au-input--full" type="text"
-                                            value={this.state.machineType} onChange={this.handleChange} name="machineType" placeholder="MachineType" />
+                                        <label>Install date</label>
+                                        <input className="au-input au-input--full" type="date"
+                                            value={this.state.installDate} onChange={this.handleChange} name="installDate" placeholder="Install Date" />
                                     </div>
                                     <div className="form-group">
                                         <label>Number of maitenences</label>

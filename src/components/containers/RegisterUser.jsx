@@ -10,8 +10,6 @@ import {echoPostUrl} from '../data/config.js';
 
 export default class RegisterUser extends React.Component {
 
-    
-
     constructor(props) {
         super(props);
         this.state = {
@@ -22,11 +20,7 @@ export default class RegisterUser extends React.Component {
             password: '',
             startDate: '',
             userRoleId:''
-            // rookie: '',
-            // technician: false,
-            // specialist: false,
-            // productSpecialist: false,
-            // admin: false
+           
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -39,7 +33,6 @@ export default class RegisterUser extends React.Component {
         
     }
 
-
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -49,38 +42,13 @@ export default class RegisterUser extends React.Component {
             [name]: value
         });
     }
-    onChangeRookie (event) {
-        this.setState({
-            rookie: event.target.value,
-        });
-    }
-    onChangeTechnician = () => {
-        this.setState(initialState => ({
-            technician: !initialState.technician,
-        }));
-    }
-    onChangeSpecialist = () => {
-        this.setState(initialState => ({
-            specialist: !initialState.specialist,
-        }));
-    }
-    onChangeProductSpecialist = () => {
-        this.setState(initialState => ({
-            productSpecialist: !initialState.productSpecialist,
-        }));
-    }
-    onChangeAdmin = () =>{
-        this.setState(initialState => ({
-            admin: !initialState.admin,
-        }));
-    }
+     
     handleRadioChange(event) {
         this.setState({
             userRoleId: event.target.value
         });
       }
-
-
+    
     handleSubmit(event) {
         const options = {
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -94,11 +62,7 @@ export default class RegisterUser extends React.Component {
             //password: this.state.password,
             startDate: this.state.startDate,
             userRoleId: this.state.userRoleId
-            // rookie: this.state.rookie,
-            // technician: this.state.technician,
-            // specialist: this.state.specialist,
-            // productSpecialist: this.state.productSpecialist,
-            // admin: this.state.admin
+            
         };
 
         axios.post(echoPostUrl+"user/save", data, options)
@@ -118,57 +82,39 @@ export default class RegisterUser extends React.Component {
     handleCancel(){
         this.props.history.push('/techTable')
     }
-     
-     
+      
      handeleGet(event){
          let e = this.props.match.params.id;
+          if(e >= 0){
          let getdata = null;
         axios.get(mockDataUrl+"user/"+ e, config)
             .then((response) => {
                 console.log(response);
                 getdata = response.data.data;
                 console.log(getdata);
-        //  if(e >= 0){
-           console.log(getdata.id);
                 this.setState({ 'id': getdata.id });
                 this.setState({ 'firstName': getdata.firstName });
                 this.setState({ 'lastName': getdata.lastName });
                 this.setState({ 'email': getdata.email });
-                this.setState({ 'password': getdata.password });
                 this.setState({ 'startDate': getdata.startDate });
-                // this.setState({ 'rookie': response.data[e].rookie });
-                // this.setState({ 'technician': response.data[e].technician });
-                // this.setState({ 'specialist': response.data[e].specialist });
-                // this.setState({ 'productSpecialist': response.data[e].productSpecialist });
-                // this.setState({ 'admin': response.data[e].admin });
-
-                
-        // }else{
-        //     this.state = {
-        //         id:'',
-        //         firstName: '',
-        //         lastName: '',
-        //         email: '',
-        //         password: '',
-        //         startDate: '',
-        //         rookie: false,
-        //         technician: false,
-        //         specialist: false,
-        //         productSpecialist: false,
-        //         admin: false
-        //     };
-        // }
-   
-                console.log(response.status);
-                console.log(response.statusText);
-                console.log(response.headers);
-                console.log(response.config);
+                this.setState({ 'userRoleId': getdata.userRoleId.toString() });    
 
             }).catch((exception) => {
                 console.log(exception);
             });
 
-        // event.preventDefault();
+            }else{
+            this.state = {
+                id:'',
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                startDate: '',
+                userRoleId: ''
+                
+            };
+        }
     }
 
 
@@ -207,11 +153,11 @@ export default class RegisterUser extends React.Component {
                                         <input className="au-input au-input--full" type="email"
                                             value={this.state.email} onChange={this.handleChange} name="email" placeholder="Email" />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label>Password</label>
                                         <input className="au-input au-input--full" type="password"
                                             value={this.state.password} onChange={this.handleChange} name="password" placeholder="Password" />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <label>Starting date</label>
                                         <input className="au-input au-input--full" type="date"
@@ -221,44 +167,40 @@ export default class RegisterUser extends React.Component {
                                         <div>
                                             <label className=" form-control-label">Technican Competences</label>
                                         </div>
-                                        <br />
-                                        <div className="radio">
                                         <div className="row form-group" id="radio">
-                                            <div className="col-md-12">
-                                            <div className="form-check-inline form-check">
-                                                        
-                                            <div className="radio">    
-                                                <label >
-                                                    <input type="radio" id="rookie" value="5" checked={this.state.userRoleId === 5}
+                                            <div className="col col-md-12">
+                                            <div className="form-check-inline form-check">                  
+                                        <div className="radio">    
+                                                <label htmlFor="inline-rookie" className="form-check form-check-inline">
+                                                    <input type="radio" id="rookie" value="5" checked={this.state.userRoleId === "5"}
                                                         onChange={this.handleRadioChange} className="form-check-input" />Rookie
-                                        
-                                                        </label>
+                                                </label>
                                         </div>                                        
                                         <div className="radio">
-                                                <label >
-                                                    <input type="radio" id="technician" value="4" checked={this.state.userRoleId === 4}
+                                                <label htmlFor="inline-tecnician" className="form-check form-check-inline" >
+                                                    <input type="radio" id="technician" value="4" checked={this.state.userRoleId === "4"}
                                                         onChange={this.handleRadioChange} className="form-check-input" />Technician
                                                         </label>
                                                         </div>                                        
                                         <div className="radio">
-                                                <label htmlFor="inline-specialist" className="form-check-label ">
-                                                    <input type="radio" id="specialist" value="3" checked={this.state.userRoleId === 3}
+                                                <label htmlFor="inline-specialist" className="form-check form-check-inline">
+                                                    <input type="radio" id="specialist" value="3" checked={this.state.userRoleId === "3"}
                                                         onChange={this.handleRadioChange} className="form-check-input" />Specialist
                                                         </label>
                                                         </div>                                        
                                         <div className="radio">
-                                                <label htmlFor="inline-productSpecialist" className="form-check-label ">
-                                                    <input type="radio" id="productSpecialist" value="2" checked={this.state.userRoleId === 2}
+                                                <label htmlFor="inline-productSpecialist" className="form-check form-check-inline">
+                                                    <input type="radio" id="productSpecialist" value="2" checked={this.state.userRoleId === "2"}
                                                         onChange={this.handleRadioChange} className="form-check-input" />Product Specialist
                                                         </label>
                                                         </div>                                        
                                         <div className="radio">
-                                                <label htmlFor="inline-admin" className="form-check-label ">
-                                                    <input type="radio" id="admin" value="1" checked={this.state.userRoleId === 1}
+                                                <label htmlFor="inline-admin" className="form-check form-check-inline">
+                                                    <input type="radio" id="admin" value="1" checked={this.state.userRoleId ==="1"}
                                                         onChange={this.handleRadioChange} className="form-check-input" />Admin
                                                         </label>
                                                         </div>
-                                                        </div>
+                                                        
                                             </div>
                                         </div>
                                     </div>
@@ -270,13 +212,13 @@ export default class RegisterUser extends React.Component {
 
                                     <button className="btn btn-danger btn-lg btn-block" onClick={this.handleCancel} >Cancel Registration</button>
                                 </form>
-
+                                     
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+                                         
         );
 
 

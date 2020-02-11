@@ -26,7 +26,7 @@ export default class SideNavBar extends React.Component {
                             
                             <li id= "tables"><Link to="/"><i className="fas fa-table"></i>Machine List</Link></li>
                             <li id= "techTable"><Link to="/techTable"><i className="fas fa-table"></i>Technician List</Link></li>
-                            {/* <li id= "register"><Link to="/register"><i className="far fa-plus-square"></i>Register User</Link></li>     */}
+                            <li id= "customerTable"><Link to="/customerTable"><i className="fas fa-table"></i>Customer Table</Link></li>    
                             
                             
                             <li id= "calendar"><Link to="/calendar"><i className="fas fa-calendar-alt"></i>Calendar</Link></li>

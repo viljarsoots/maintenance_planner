@@ -13,7 +13,7 @@ let httpsProxyAgent = require('https-proxy-agent');
 var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 
-const mockDataUrl = "https://api.mockaroo.com/api/9424bf70?count=200&key=87536420";
+const mockDataUrl = "https://api.mockaroo.com/api/6f8594a0?count=50&key=87536420";
 const echoPostUrl = "http://localhost:7000/machine";
 //const mockDataUrl = "http://localhost:8080/rest";
 
@@ -32,12 +32,12 @@ const customTotal = (from, to, size) => (
   </span>
 );
 
-export default class MainTable extends React.Component {
+export default class CustomerTable extends React.Component {
 
 	constructor(props) {
 		super(props);
 			this.state = {
-				machineData: []
+				customerData: []
 			};
 
 		this.formatProductDetailsButtonCell=this.formatProductDetailsButtonCell.bind(this);
@@ -47,14 +47,14 @@ export default class MainTable extends React.Component {
 		this.handeleGet = this.handeleGet.bind(this);
 	}
 	handeleAddMachine = () => {
-		this.props.history.push("/addmachine");
+		this.props.history.push("/addCustomer");
 	}
 
 	productDetails = (e) => {
 
 		let { id } = e.target;
 		console.log("See Details for Id: " + id);
-		this.props.history.push('/addmachine/' + id);
+		this.props.history.push('/addCustomer/' + id);
 	}
 
 	formatProductDetailsButtonCell = (cell, row) => {
@@ -71,7 +71,7 @@ export default class MainTable extends React.Component {
         axios.get(mockDataUrl, config)
             .then((response) => {
 
-				this.setState({machineData: response.data});
+				this.setState({customerData: response.data});
 				// console.log(response.data);
 
 
@@ -112,7 +112,7 @@ export default class MainTable extends React.Component {
 			}, {
 				text: '100', value: 100
 			}, {
-				text: 'All', value: this.state.machineData.length
+				text: 'All', value: this.state.customerData.length
 			}] // A numeric array is also available. the purpose of above example is custom the text
 		};
 
@@ -121,25 +121,16 @@ export default class MainTable extends React.Component {
 			text: 'ID',
 		
 		}, {
-			dataField: 'machineName',
-			text: 'Machine Name',
+			dataField: 'customerName',
+			text: 'Customer Name',
 		
 		}, {
-			dataField: 'producerName',
-			text: 'Producer Name',
+			dataField: 'address',
+			text: 'Customer Address',
 		
-		}, {
-			dataField: 'installDate',
-			text: 'Install Date'
-		}, {
-			dataField: 'nrOfMaitn',
-			text: 'Number of maitenences'
 		}, {
 			dataField: 'location',
-			text: 'Location'
-		}, {
-			dataField: 'lastMtnDate',
-			text: 'Last Maitenence Date'
+			text: 'Production Location'
 		}, {
 			dataField: 'action',
 			text: '',
@@ -154,7 +145,7 @@ export default class MainTable extends React.Component {
 					<ToolkitProvider
 						keyField="id"
 						columns={columns}
-						data={this.state.machineData}
+						data={this.state.customerData}
 						search
 					>
 						{
@@ -170,7 +161,7 @@ export default class MainTable extends React.Component {
 											</div>
 										</div>
 										<br />
-										<button type="button" className="btn btn-secondary" onClick={this.handeleAddMachine}>Add New Machine</button>
+										<button type="button" className="btn btn-secondary" onClick={this.handeleAddMachine}>Add New Customer</button>
 										<BootstrapTable
 											striped
 											hover
@@ -203,7 +194,7 @@ export default class MainTable extends React.Component {
 
 		return (
 			<div id="machineTable">
-				<h2>Machine Table</h2>
+				<h2>Customer Table</h2>
 
 				<PaginationProvider pagination={paginationFactory(paginationConfig)} >
 					{contentTable}

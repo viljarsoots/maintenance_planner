@@ -68,7 +68,7 @@ export default class RegisterUser extends React.Component {
         axios.post(echoPostUrl+"user/save", data, options)
             .then((response) => {
                 console.log("response from echo server");
-                console.log(data);
+                console.log(response.data);
             }).catch((exception) => {
                 console.log(exception);
             });
@@ -80,7 +80,7 @@ export default class RegisterUser extends React.Component {
     }
     
     handleCancel(){
-        this.props.history.push('/techTable')
+        this.props.history.push('/techTable/')
     }
       
      handeleGet(event){

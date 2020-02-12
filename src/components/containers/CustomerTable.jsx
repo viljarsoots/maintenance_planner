@@ -4,23 +4,10 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
-import './MainTable.css';
-
-
-const axios = require("axios"); //external library  https://github.com/axios/axios
-let httpsProxyAgent = require('https-proxy-agent');
-
-var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
-
-
-const mockDataUrl = "https://api.mockaroo.com/api/6f8594a0?count=50&key=87536420";
-const echoPostUrl = "http://localhost:7000/machine";
-//const mockDataUrl = "http://localhost:8080/rest";
-
-var config = {
-    httpsAgent: agent
-}
-
+import {mockDataUrl} from '../data/config.js';
+import {config} from '../data/config.js';
+import {axios} from '../data/config.js';
+import {agent} from '../data/config.js';
 
 
 const { SearchBar } = Search;
@@ -63,15 +50,15 @@ export default class CustomerTable extends React.Component {
 		return aBtn;
 	}
 
-	componentDidMount(){    
+	componentDidMount(event){    
 		this.handeleGet();
 	   }
 
 	   handeleGet(event) {
-        axios.get(mockDataUrl, config)
+        axios.get(mockDataUrl+"customer", config)
             .then((response) => {
 
-				this.setState({customerData: response.data});
+				this.setState({customerData: response.data.data});
 				// console.log(response.data);
 
 
@@ -121,7 +108,7 @@ export default class CustomerTable extends React.Component {
 			text: 'ID',
 		
 		}, {
-			dataField: 'customerName',
+			dataField: 'name',
 			text: 'Customer Name',
 		
 		}, {

@@ -2,17 +2,11 @@ import React from 'react';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import {techniciansData} from '../data/TechniciansData.js';
 import {mockDataUrl} from '../data/config.js';
 import {config} from '../data/config.js';
 import {axios} from '../data/config.js';
 import {agent} from '../data/config.js';
 
-const selectRow = {
-    mode: 'checkbox',
-    clickToSelect: true,
-    
-  };
 
 export default class TechnicianTable extends React.Component{
     
@@ -29,16 +23,15 @@ export default class TechnicianTable extends React.Component{
         this.productDetails=this.productDetails.bind(this);
         this.handeleAdd=this.handeleAdd.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
+        this.handeleGet = this.handeleGet.bind(this);
     }
     handeleAdd= ()=> {
         this.props.history.push('/register');
     }
-       
-   
 
     productDetails = (e)=> {   
         
-        let { id} = e.target;
+        let {id} = e.target;
         console.log("See Details for Id: "+ id);
         this.props.history.push('/register/'+id);
     }

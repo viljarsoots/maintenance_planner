@@ -47,19 +47,19 @@ export default class MainTable extends React.Component {
 		this.handeleGet = this.handeleGet.bind(this);
 	}
 	handeleAddMachine = () => {
-		this.props.history.push("/addmachine");
+		this.props.history.push("/addmachine/");
 	}
 
 	productDetails = (e) => {
 
-		let { id } = e.target;
+		let { id} = e.target;
 		console.log("See Details for Id: " + id);
-		this.props.history.push('/addmachine/' + id);
+		this.props.history.push('/addmachine/'+id);
 	}
 
 	formatProductDetailsButtonCell = (cell, row) => {
 		let clickHandler = this.productDetails;
-		let aBtn = React.createElement('button', { id: row.id, className: "btn btn-success btn-lg btn-block", onClick: clickHandler }, 'Edit');
+		let aBtn = React.createElement('button',{ id:row.id, className: "btn btn-success btn-lg btn-block", onClick: clickHandler }, 'Edit');
 		return aBtn;
 	}
 

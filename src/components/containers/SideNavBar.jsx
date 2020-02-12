@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route,Switch } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 import './SideNavBar.css';
 
 
@@ -25,17 +25,17 @@ export default class SideNavBar extends React.Component {
                         <ul className="list-unstyled navbar__list" id= "sidebar">
                             
                             <li id= "tables"><Link to="/"><i className="fas fa-table"></i>Machine List</Link></li>
-                            <li id= "techTable"><Link to="/techTable"><i className="fas fa-table"></i>Technician List</Link></li>
-                            <li id= "customerTable"><Link to="/customerTable"><i className="fas fa-table"></i>Customer Table</Link></li>    
+                            <li id= "techTable"><Link to="/techTable/"><i className="fas fa-table"></i>Technician List</Link></li>
+                            <li id= "customerTable"><Link to="/customerTable/"><i className="fas fa-table"></i>Customer Table</Link></li>    
                             
                             
-                            <li id= "calendar"><Link to="/calendar"><i className="fas fa-calendar-alt"></i>Calendar</Link></li>
-                            <li id= "spareParts"><Link to="/spareparts"><i className="fas fa-calendar-alt"></i>Spare Parts</Link></li>
+                            <li id= "calendar"><Link to="/calendar/"><i className="fas fa-calendar-alt"></i>Calendar</Link></li>
+                            <li id= "spareParts"><Link to="/spareparts/"><i className="fas fa-calendar-alt"></i>Spare Parts</Link></li>
                             
                             
                             
                             <li id="addmachine">
-                            <Link to="/addmachine">
+                            <Link to="/addmachine/">
                                     <i className="fas fa-copy"></i>Add Machine</Link>
                                 
                             </li>

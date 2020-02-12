@@ -33,7 +33,7 @@ export default class AddMachine extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handeleGet2 = this.handeleGet2.bind(this);
         this.handleCancel=this.handleCancel.bind(this);
-
+        console.log(this.props.match.params.id);
     }
 
     handleChange(event) {
@@ -98,7 +98,7 @@ export default class AddMachine extends React.Component {
     }
 
     handleCancel(){
-        this.props.history.push('/machineTable')
+        this.props.history.push('/machineTable/')
     }
 
     render() {

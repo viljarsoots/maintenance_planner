@@ -32,16 +32,18 @@ export default class MasterLayout extends React.Component {
 
                             <Switch>
                                 <Route exact path="/" component={MainTable} />
-                                <Route path="/machineTable" component={MainTable} />
-                                <Route path="/techTable" component={TechnicianTable} />
+                                <Route path="/machineTable/" component={MainTable} />
+                                <Route path="/techTable/" component={TechnicianTable} />
                                 <Route path="/register/:id" component={RegisterUser}  />
                                 <Route path="/register/" component={RegisterUser}  />                                
-                                <Route path="/calendar" component={DemoDetailsPage} />
-                                <Route path="/spareparts" component={SpareParts} />
-                                <Route path="/addmachine" component={AddMachine} />
+                                <Route path="/calendar/" component={DemoDetailsPage} />
+                                <Route path="/spareparts/" component={SpareParts} />
                                 <Route path="/addmachine/:id" component={AddMachine} />
-                                <Route path="/customerTable" component={CustomerTable} />
-                                <Route path="/addCustomer" component={AddCustomer} />
+                                <Route path="/addmachine/" component={AddMachine} />
+                                <Route path="/customerTable/" component={CustomerTable} />
+                                <Route path='/addCustomer/:id' component={AddCustomer} />
+                                <Route path="/addCustomer/" component={AddCustomer} />
+                                
                             </Switch>
 
                         </div>

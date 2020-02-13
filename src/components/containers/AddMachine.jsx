@@ -66,6 +66,7 @@ export default class AddMachine extends React.Component {
                 console.log(response.data);
             }).catch((exception) => {
                 console.log(exception);
+                this.handleCancel();
             });
 
         event.preventDefault();

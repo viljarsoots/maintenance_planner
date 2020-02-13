@@ -147,7 +147,7 @@ export default class AddCustomer extends React.Component {
                                     
                                     <button className="au-btn au-btn--block au-btn--green m-b-20"  onClick={this.handleSubmit}  >Save Changes</button>
 
-                                    <button className="btn btn-warning btn-lg btn-block" onClick={this.handeleGet} >Get Data</button>
+                                    {/* <button className="btn btn-warning btn-lg btn-block" onClick={this.handeleGet} >Get Data</button> */}
 
                                     <button className="btn btn-danger btn-lg btn-block" onClick={this.handleCancel} >Cancel Registration</button>
                                 </form>

@@ -27,8 +27,9 @@ export default class CustomerTable extends React.Component {
 				customerData: []
 			};
 
-		this.formatProductDetailsButtonCell=this.formatProductDetailsButtonCell.bind(this);
-        this.productDetails=this.productDetails.bind(this);
+		this.formatcustomerDetailsButtonCell=this.formatcustomerDetailsButtonCell.bind(this);
+		this.customerDetails=this.customerDetails.bind(this);
+		this.customerMachineDetails=this.customerMachineDetails.bind(this);
 		this.handeleAddMachine=this.handeleAddMachine.bind(this);
 		this.componentDidMount = this.componentDidMount.bind(this);
 		this.handeleGet = this.handeleGet.bind(this);
@@ -37,17 +38,28 @@ export default class CustomerTable extends React.Component {
 		this.props.history.push("/addCustomer");
 	}
 
-	productDetails = (e) => {
+	customerDetails = (e) => {
 
 		let { id } = e.target;
 		console.log("See Details for Id: " + id);
 		this.props.history.push('/addCustomer/' + id);
 	}
 
-	formatProductDetailsButtonCell = (cell, row) => {
-		let clickHandler = this.productDetails;
-		let aBtn = React.createElement('button', { id: row.id, className: "btn btn-success btn-lg btn-block", onClick: clickHandler }, 'Edit');
-		return aBtn;
+	customerMachineDetails = (e) => {
+
+		let { id } = e.target;
+		console.log("See Details for Id: " + id);
+		this.props.history.push('/addCustomer/' + id);
+	}
+
+
+	formatcustomerDetailsButtonCell = (cell, row) => {
+		let editHandler = this.customerDetails;
+		let seeMachines = this.customerMachineDetails;
+		let editBtn = React.createElement('button', { id: row.id, className: "btn-success btn-sm", onClick: editHandler }, 'Edit');
+		let seeMachinesBtn = React.createElement('button', { id: row.id, className: "btn-warning btn-sm", onClick: seeMachines }, 'See Machines');
+		let container = React.createElement('div',{},[editBtn, seeMachinesBtn]);
+		return container;
 	}
 
 	componentDidMount(event){    
@@ -121,7 +133,7 @@ export default class CustomerTable extends React.Component {
 		}, {
 			dataField: 'action',
 			text: '',
-			formatter: this.formatProductDetailsButtonCell
+			formatter: this.formatcustomerDetailsButtonCell
 		}];
 
 		const contentTable = ({ paginationProps, paginationTableProps }) => {

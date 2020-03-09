@@ -19,8 +19,8 @@ export default class TechnicianTable extends React.Component{
           };
 
 
-        this.formatProductDetailsButtonCell=this.formatProductDetailsButtonCell.bind(this);
-        this.productDetails=this.productDetails.bind(this);
+        this.formattechnicanDetailsButtonCell=this.formattechnicanDetailsButtonCell.bind(this);
+        this.technicanDetails=this.technicanDetails.bind(this);
         this.handeleAdd=this.handeleAdd.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.handeleGet = this.handeleGet.bind(this);
@@ -29,15 +29,15 @@ export default class TechnicianTable extends React.Component{
         this.props.history.push('/register');
     }
 
-    productDetails = (e)=> {   
+    technicanDetails = (e)=> {   
         
         let {id} = e.target;
         console.log("See Details for Id: "+ id);
         this.props.history.push('/register/'+id);
     }
     
-    formatProductDetailsButtonCell =(cell, row)=>{  
-        let clickHandler= this.productDetails;			
+    formattechnicanDetailsButtonCell =(cell, row)=>{  
+        let clickHandler= this.technicanDetails;			
         let aBtn = React.createElement('button',{id:row.id, className:"btn btn-success btn-lg btn-block", onClick:clickHandler},'Edit' );
         return aBtn;	
     }
@@ -85,7 +85,7 @@ export default class TechnicianTable extends React.Component{
           }, {  
               dataField: 'action',    
               text:'',
-              formatter: this.formatProductDetailsButtonCell
+              formatter: this.formattechnicanDetailsButtonCell
           }];
 
         return (        

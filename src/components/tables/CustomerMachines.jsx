@@ -4,14 +4,10 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
-import {mockDataUrl} from '../data/config.js';
-import {config} from '../data/config.js';
-import {axios} from '../data/config.js';
-import {agent} from '../data/config.js';
+import {mockDataUrl, config, axios} from '../data/config.js';
 
 
 const { SearchBar } = Search;
-
 
 const customTotal = (from, to, size) => (
 	<span className="react-bootstrap-table-pagination">
@@ -19,65 +15,53 @@ const customTotal = (from, to, size) => (
   </span>
 );
 
-export default class CustomerTable extends React.Component {
+export default class CustomerMachines extends React.Component {
 
 	constructor(props) {
 		super(props);
 			this.state = {
-				customerData: []
+				machineData: []
 			};
 
-		this.formatcustomerDetailsButtonCell=this.formatcustomerDetailsButtonCell.bind(this);
-		this.customerDetails=this.customerDetails.bind(this);
-		this.customerMachineDetails=this.customerMachineDetails.bind(this);
+		this.formatProductDetailsButtonCell=this.formatProductDetailsButtonCell.bind(this);
+        this.productDetails=this.productDetails.bind(this);
 		this.handeleAddMachine=this.handeleAddMachine.bind(this);
 		this.componentDidMount = this.componentDidMount.bind(this);
 		this.handeleGet = this.handeleGet.bind(this);
 	}
 	handeleAddMachine = () => {
-		this.props.history.push("/addCustomer");
+		this.props.history.push("/addmachine/");
 	}
 
-	customerDetails = (e) => {
+	productDetails = (e) => {
 
-		let { id } = e.target;
+		let { id} = e.target;
 		console.log("See Details for Id: " + id);
-		this.props.history.push('/addCustomer/' + id);
+		this.props.history.push('/addmachine/'+id);
 	}
 
-	customerMachineDetails = (e) => {
-
-		let { id } = e.target;
-		console.log("See Details for Id: " + id);
-		this.props.history.push('/addCustomer/' + id);
+	formatProductDetailsButtonCell = (cell, row) => {
+		let clickHandler = this.productDetails;
+		let aBtn = React.createElement('button',{ id:row.id, className: "btn btn-success btn-lg btn-block", onClick: clickHandler }, 'Edit');
+		return aBtn;
 	}
 
-
-	formatcustomerDetailsButtonCell = (cell, row) => {
-		let editHandler = this.customerDetails;
-		let seeMachines = this.customerMachineDetails;
-		let editBtn = React.createElement('button', { id: row.id, className: "btn-success btn-sm", onClick: editHandler }, 'Edit');
-		let seeMachinesBtn = React.createElement('button', { id: row.id, className: "btn-warning btn-sm", onClick: seeMachines }, 'See Machines');
-		let container = React.createElement('div',{},[editBtn, seeMachinesBtn]);
-		return container;
-	}
-
-	componentDidMount(event){    
+	componentDidMount(){    
 		this.handeleGet();
 	   }
 
 	   handeleGet(event) {
-        axios.get(mockDataUrl+"customer", config)
+        axios.get(mockDataUrl+"customer/1", config)
             .then((response) => {
 
-				this.setState({customerData: response.data.data});
-				 console.log(response.data);
+				this.setState({machineData: response.data.data.machineSet});
+                 console.log(response.data.data.machineSet);
 
 
 			}).catch((exception) => {
                 console.log(exception);
             });
-
+            //console.log(machineData);
          //event.preventDefault();
     }
 
@@ -111,7 +95,7 @@ export default class CustomerTable extends React.Component {
 			}, {
 				text: '100', value: 100
 			}, {
-				text: 'All', value: this.state.customerData.length
+				text: 'All', value: this.state.machineData.length
 			}] // A numeric array is also available. the purpose of above example is custom the text
 		};
 
@@ -120,20 +104,29 @@ export default class CustomerTable extends React.Component {
 			text: 'ID',
 		
 		}, {
-			dataField: 'name',
-			text: 'Customer Name',
+			dataField: 'machineName',
+			text: 'Machine Name',
 		
 		}, {
-			dataField: 'address',
-			text: 'Customer Address',
+			dataField: 'producerName',
+			text: 'Producer Name',
 		
+		}, {
+			dataField: 'startupDate',
+			text: 'Install Date'
+		}, {
+			dataField: 'nrOfMaitn',
+			text: 'Number of maitenences'
 		}, {
 			dataField: 'location',
-			text: 'Production Location'
+			text: 'Location'
+		}, {
+			dataField: 'lastMtnDate',
+			text: 'Last Maitenence Date'
 		}, {
 			dataField: 'action',
 			text: '',
-			formatter: this.formatcustomerDetailsButtonCell
+			formatter: this.formatProductDetailsButtonCell
 		}];
 
 		const contentTable = ({ paginationProps, paginationTableProps }) => {
@@ -144,7 +137,9 @@ export default class CustomerTable extends React.Component {
 					<ToolkitProvider
 						keyField="id"
 						columns={columns}
-						data={this.state.customerData}
+						data={this.state.machineData}
+						hover
+                        bordered={false}
 						search
 					>
 						{
@@ -160,7 +155,7 @@ export default class CustomerTable extends React.Component {
 											</div>
 										</div>
 										<br />
-										<button type="button" className="btn btn-secondary" onClick={this.handeleAddMachine}>Add New Customer</button>
+										<button type="button" className="btn btn-secondary" onClick={this.handeleAddMachine}>Add New Machine</button>
 										<BootstrapTable
 											striped
 											hover
@@ -193,7 +188,7 @@ export default class CustomerTable extends React.Component {
 
 		return (
 			<div id="machineTable">
-				<h2>Customer Table</h2>
+				<h2>Machine Table</h2>
 
 				<PaginationProvider pagination={paginationFactory(paginationConfig)} >
 					{contentTable}

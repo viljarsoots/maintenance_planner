@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SideNavBar from '../containers/SideNavBar.jsx';
 import TopNavBar from '../containers/TopNavBar.jsx';
 import MainTable from '../containers/MainTable.jsx';
-import DemoDetailsPage from '../pages/DemoDetailsPage.jsx';
+import CustomerMachines from '../tables/CustomerMachines.jsx';
 import {Route, Switch } from 'react-router-dom';
 import RegisterUser from '../containers/RegisterUser';
 import AddMachine from '../containers/AddMachine.jsx';
@@ -36,7 +36,7 @@ export default class MasterLayout extends React.Component {
                                 <Route path="/techTable/" component={TechnicianTable} />
                                 <Route path="/register/:id" component={RegisterUser}  />
                                 <Route path="/register/" component={RegisterUser}  />                                
-                                <Route path="/calendar/" component={DemoDetailsPage} />
+                                <Route path="/calendar/" component={CustomerMachines} />
                                 <Route path="/spareparts/" component={SpareParts} />
                                 <Route path="/addmachine/:id" component={AddMachine} />
                                 <Route path="/addmachine/" component={AddMachine} />

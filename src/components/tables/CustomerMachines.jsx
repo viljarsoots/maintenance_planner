@@ -188,7 +188,7 @@ export default class CustomerMachines extends React.Component {
 
 		return (
 			<div id="machineTable">
-				<h2>Machine Table</h2>
+				<h2>Customer Machine Table</h2>
 
 				<PaginationProvider pagination={paginationFactory(paginationConfig)} >
 					{contentTable}

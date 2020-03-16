@@ -51,7 +51,8 @@ export default class CustomerMachines extends React.Component {
 	   }
 
 	   handeleGet(event) {
-        axios.get(mockDataUrl+"customer/1", config)
+		   let cId = this.props.match.params.id;
+        axios.get(mockDataUrl+"customer/"+cId, config)
             .then((response) => {
 
 				this.setState({machineData: response.data.data.machineSet});

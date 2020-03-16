@@ -54,7 +54,7 @@ export default class AddMachine extends React.Component {
         let data = {
             machineName: this.state.machineName,
             producerName: this.state.producerName,
-            installDate: this.state.installDate,
+            installDate: this.state.startupDate,
             nrOfMaitn: this.state.nrOfMaitn,
             location: this.state.location,
             lastMtnDate: this.state.lastMtnDate

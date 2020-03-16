@@ -9,7 +9,8 @@ import RegisterUser from '../containers/RegisterUser';
 import AddMachine from '../containers/AddMachine.jsx';
 import TechnicianTable from '../containers/TechnicianTable.jsx';
 import SpareParts from '../containers/SpareParts.jsx';
-import CustomerTable from '../containers/CustomerTable.jsx';
+import CustomerTable from '../tables/CustomerTable.jsx';
+import CustomerTableTest from '../tables/CustomerTableTest.jsx';
 import AddCustomer from '../containers/AddCustomer.jsx';
 
 
@@ -41,7 +42,7 @@ export default class MasterLayout extends React.Component {
                                 <Route path="/spareparts/" component={SpareParts} />
                                 <Route path="/addmachine/:id" component={AddMachine} />
                                 <Route path="/addmachine/" component={AddMachine} />
-                                <Route path="/customerTable/" component={CustomerTable} />
+                                <Route path="/customerTable/" component={CustomerTableTest} />
                                 <Route path='/addCustomer/:id' component={AddCustomer} />
                                 <Route path="/addCustomer/" component={AddCustomer} />
                                 

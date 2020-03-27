@@ -160,7 +160,7 @@ export default class CustomerTableTest extends React.Component {
 	closeMachineModal() {
 		this.setState({ openMachineModal: false })
 	}
-	
+
 	productDetails = (e) => {
 
 		let { id} = e.target;
@@ -263,7 +263,7 @@ export default class CustomerTableTest extends React.Component {
 									<div>
 										{
 											this.state.openMachineModal &&
-											<Modal size={1600} onClose={this.closeInvoiceModal}>
+											<Modal size="large" onClose={this.closeMachineModal}>
 												<Modal.Header>
 													<Modal.Title>
 														Customer Machines
@@ -317,7 +317,6 @@ export default class CustomerTableTest extends React.Component {
 										/>
 
 									</div>);
-
 
 							}
 						}

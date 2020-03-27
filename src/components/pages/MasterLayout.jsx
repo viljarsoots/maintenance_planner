@@ -22,7 +22,9 @@ export default class MasterLayout extends React.Component {
     render() {
         return (
             <div className="page-wrapper">
+
                 <SideNavBar />
+                
                 <div className="page-container">
 
                     <TopNavBar />

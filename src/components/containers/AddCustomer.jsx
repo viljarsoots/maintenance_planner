@@ -96,7 +96,7 @@ export default class AddCustomer extends React.Component {
             });
 
             }else{
-                this.state = {
+                this.setState = {
                     id:'',
                     name: '',
                     address: '',
